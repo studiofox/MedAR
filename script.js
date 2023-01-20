@@ -1,7 +1,7 @@
 
     const scene = new THREE.Scene();
 
-	const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+	const ambientLight = new THREE.AmbientLight(0xffffff, 3);
 	scene.add( ambientLight );
 
 	const drligt = new THREE.DirectionalLight(0xffffff, 2);
