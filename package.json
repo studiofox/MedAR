@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "three": "^0.147.0"
+  },
+  "name": "new",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/studiofox/MedBoxAR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/studiofox/MedBoxAR/issues"
+  },
+  "homepage": "https://github.com/studiofox/MedBoxAR#readme",
+  "description": ""
+}
