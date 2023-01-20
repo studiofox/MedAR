@@ -1,5 +1,5 @@
 
-const scene = new THREE.Scene();
+    const scene = new THREE.Scene();
 
 	const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 	scene.add( ambientLight );
@@ -74,7 +74,7 @@ const scene = new THREE.Scene();
 
 	const assetLoader = new THREE.GLTFLoader();
 
-assetLoader.load("Model.glb", function (gltf) {
+assetLoader.load("Footman.glb", function (gltf) {
   const model = gltf.scene;
   markerRoot1.add(model);
 //   model.position.set(-12, -50, -100);
