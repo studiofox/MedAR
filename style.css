@@ -41,3 +41,43 @@
     transform: rotate(-20deg);
     /* z-index: -2; */
 }
+
+
+@media (max-width: 959px) and (orientation:landscape) {
+    #logo{
+        height: 3rem;
+    }
+
+    #logo1{
+        width: 6rem;
+        padding: 0.5rem;
+    }
+    #logo2{
+        width: 4rem;
+        padding: 1rem;
+        /* justify-content: center; */
+        /* align-items: right; */
+        position: absolute;
+        right: 1rem;
+    }
+
+    #footer{
+        height: 1.5rem;
+    }
+    #img1{
+        width: 50rem;
+        position: absolute;
+        top: 0rem;
+        /* z-index: -2; */
+    }
+    #img2{
+        width: 50rem;
+        position: absolute;
+        top: 2rem;
+        right: 0rem;
+        transform: rotate(-20deg);
+        /* z-index: -2; */
+    }
+    
+}
+ 
