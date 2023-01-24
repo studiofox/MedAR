@@ -88,7 +88,7 @@
 // });
 
 let model;
-assetLoader.load("Model.glb", function (gltf) {
+assetLoader.load("box.glb", function (gltf) {
   const model = gltf.scene;
   markerRoot1.add(model);
 //   model.position.set(-12, -50, -100);
