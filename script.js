@@ -8,7 +8,7 @@
 	scene.add( drligt );
 
 			
-	const camera = new THREE.Camera();
+	const camera = new THREE.Camera(75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 	scene.add(camera);
 
 	const canvas = document.querySelector("#canvas");
@@ -19,7 +19,7 @@
 		alpha: true
 	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	renderer.setSize( 640, 480 );
+	renderer.setSize( 1800, 1200 );
 	renderer.domElement.style.position = 'absolute'
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
@@ -73,12 +73,37 @@
 
 
 	const assetLoader = new THREE.GLTFLoader();
+	
 
+// assetLoader.load("Model.glb", function (gltf) {
+//   const model = gltf.scene;
+//   markerRoot1.add(model);
+// //   model.position.set(-12, -50, -100);
+//   model.scale.set(0.7, 0.7, 0.7);
+
+//   model.traverse(function(node) {
+//     if(node.isMesh)
+//     {node.castShadow = true;}
+//   });
+// });
+
+let model;
 assetLoader.load("Model.glb", function (gltf) {
   const model = gltf.scene;
   markerRoot1.add(model);
 //   model.position.set(-12, -50, -100);
   model.scale.set(0.7, 0.7, 0.7);
+
+  
+  setTimeout(() => {
+	markerRoot1.remove(model);
+  }, 12000);
+  setTimeout(() => {
+	markerRoot1.add(model);
+  }, 22000);
+  setTimeout(() => {
+	markerRoot1.remove(model);
+  }, 31000);
 
   model.traverse(function(node) {
     if(node.isMesh)
@@ -86,11 +111,7 @@ assetLoader.load("Model.glb", function (gltf) {
   });
 });
 
-
-
-
 const plane1geo = new THREE.PlaneGeometry(1.5, 1.5, 1.5);
-// const plane1png = new URL ("Picture1.png", import.meta.url );
 const plane1texture = new THREE.TextureLoader().load("Picture1.png")
 const plane1Mat = new THREE.MeshBasicMaterial({
 	map : plane1texture,
@@ -98,7 +119,8 @@ const plane1Mat = new THREE.MeshBasicMaterial({
 });
 const plane1 = new THREE.Mesh(plane1geo, plane1Mat);
 // markerRoot1.add(plane1);
-plane1.position.set(2, 0.3, -0.5);
+plane1.position.set(2, 0, -0.5);
+// plane1.scale.set(0, 0, 0);
 
 const plane2geo = new THREE.PlaneGeometry(2.5, 1.5, 1.5);
 const plane2texture = new THREE.TextureLoader().load("Picture3.png")
@@ -108,7 +130,7 @@ const plane2Mat = new THREE.MeshBasicMaterial({
 });
 const plane2 = new THREE.Mesh(plane2geo, plane2Mat);
 // markerRoot1.add(plane2);
-plane2.position.set(0, 3, -0.5);
+plane2.position.set(0, 0, -0.5);
 
 const plane3geo = new THREE.PlaneGeometry(2.5, 1.5, 1.5);
 const plane3texture = new THREE.TextureLoader().load("Picture3.png")
@@ -118,7 +140,7 @@ const plane3Mat = new THREE.MeshBasicMaterial({
 });
 const plane3 = new THREE.Mesh(plane3geo, plane3Mat);
 // markerRoot1.add(plane3);
-plane3.position.set(-2, 0.3, -0.5);
+plane3.position.set(0, 0, -0.5);
 
 
 
@@ -134,60 +156,50 @@ function render()
 	renderer.render( scene, camera );
 }
 
+setTimeout(() => {
+	markerRoot1.add(plane1);
+  }, 8000);
+  setTimeout(() => {
+	markerRoot1.remove(plane1);
+  }, 12000);
+  setTimeout(() => {
+	markerRoot1.add(plane2);
+  }, 13000);
+  setTimeout(() => {
+	markerRoot1.remove(plane2);
+  }, 17000);
+  setTimeout(() => {
+	markerRoot1.add(plane3);
+  }, 18000);
+  setTimeout(() => {
+	markerRoot1.remove(plane3);
+  }, 22000);
+
+  setTimeout(() => {
+	markerRoot1.add(plane1);
+  }, 27000);
+  setTimeout(() => {
+	markerRoot1.remove(plane1);
+  }, 31000);
+  setTimeout(() => {
+	markerRoot1.add(plane2);
+  }, 32000);
+  setTimeout(() => {
+	markerRoot1.remove(plane2);
+  }, 36000);
+  setTimeout(() => {
+	markerRoot1.add(plane3);
+  }, 37000);
+  setTimeout(() => {
+	markerRoot1.remove(plane3);
+  }, 41000);
+
+
+
+
 
 function animate()
 {
-	function loopObjects() {
-		markerRoot1.add(plane1);
-		new TWEEN.Tween({ opacity: 1 })
-			.to({ opacity: 0 }, 50)
-			.onUpdate(function () {
-				plane1.material.opacity = this.opacity;
-			})
-			.onComplete(function () {
-				markerRoot1.remove(plane1);
-				markerRoot1.add(plane2);
-				new TWEEN.Tween({ opacity: 0 })
-					.to({ opacity: 1 }, 50)
-					.onUpdate(function () {
-						plane2.material.opacity = this.opacity;
-					})
-					.onComplete(function () {
-						new TWEEN.Tween({ opacity: 1 })
-						.to({ opacity: 0 }, 50)
-						.onUpdate(function () {
-							plane2.material.opacity = this.opacity;
-						})
-						.onComplete(function () {
-							markerRoot1.remove(plane2);
-							markerRoot1.add(plane3);
-							new TWEEN.Tween({ opacity: 0 })
-							.to({ opacity: 1 }, 50)
-							.onUpdate(function () {
-								plane3.material.opacity = this.opacity;
-							})
-							// .onComplete(function () {
-							// 	markerRoot1.remove(plane3);
-							// markerRoot1.add(plane1);
-							// 	new TWEEN.Tween({ opacity: 1 })
-							// 	.to({ opacity: 0 }, 500)
-							// 	.onUpdate(function () {
-							// 		plane3.material.opacity = this.opacity;
-							// 	})
-								.start();
-								})
-								.start();
-								})
-								.start();
-								})
-								// .start();
-								// })
-							}
-
-setInterval(loopObjects, 2500);
-
-
-TWEEN.update();
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
@@ -197,3 +209,20 @@ TWEEN.update();
 
 
 animate();
+
+// function settime(){
+// 	var audio= document.getElementById("myaudio");
+// 	audio.currentTime=0;
+// 	audio.duration = 5;
+//     audio.ended = 15;
+// 	audio.play();
+			
+// 	}
+
+	setTimeout(function(){
+		document.getElementById("myaudio1").play();
+		}, 8000)
+
+		setTimeout(function(){
+			document.getElementById("myaudio2").play();
+			}, 16000)
